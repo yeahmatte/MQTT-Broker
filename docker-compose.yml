@@ -1,0 +1,22 @@
+version: "3"
+services:
+  mqtt-broker:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    restart: unless-stopped
+    user: "0"
+    volumes:
+      - "./mosquitto/log:/mosquitto/log"
+      - "./mosquitto/certs:/mosquitto/certs"
+      - "./mosquitto/config:/mosquitto/config"
+      - "./mosquitto/data:/mosquitto/data"
+    networks:
+      - localnet
+    expose:
+      - "1883"
+      - "9001"
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+networks:
+  localnet:
