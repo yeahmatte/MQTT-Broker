@@ -2,9 +2,9 @@ version: "3"
 services:
   mqtt-broker:
     image: eclipse-mosquitto
-    container_name: mosquitto
+    container_name: mqtt-broker
     restart: unless-stopped
-    user: "0"
+    user: "1883:1883"
     volumes:
       - "./mosquitto/log:/mosquitto/log"
       - "./mosquitto/certs:/mosquitto/certs"
@@ -18,5 +18,8 @@ services:
     ports:
       - "1883:1883"
       - "9001:9001"
+    environment:
+      - PUID=1883
+      - PGID=1883
 networks:
   localnet:
