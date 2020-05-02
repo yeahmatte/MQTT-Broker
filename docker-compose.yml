@@ -1,25 +1,33 @@
 version: "3"
 services:
   mqtt-broker:
-    image: eclipse-mosquitto
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     container_name: mqtt-broker
     restart: unless-stopped
-    user: "1883:1883"
+    user: 1883:1883
     volumes:
-      - "./mosquitto/log:/mosquitto/log"
-      - "./mosquitto/certs:/mosquitto/certs"
-      - "./mosquitto/config:/mosquitto/config"
-      - "./mosquitto/data:/mosquitto/data"
+    volumes:
+      - ./mosquitto/conf/:/mosquitto/conf
+      - ./mosquitto/log/:/mosquitto/log
+      - ./letsencrypt:/etc/letsencrypt
+      - ./scripts:/scripts
+      - ./mosquitto/data:/mosquitto/data
     networks:
-      - localnet
-    expose:
-      - "1883"
-      - "9001"
+      - backend-net
     ports:
-      - "1883:1883"
-      - "9001:9001"
+      - 1883:1883
+      - 8083:8083
+      - 8883:8883
+      - 8116:80
+    environment:
+      - DOMAIN=YOUR_DOMAIN_HERE
+      - EMAIL=YOUR_DOMAIN_EMAIL
     environment:
       - PUID=1883
       - PGID=1883
 networks:
-  localnet:
+  backend-net:
+    external:
+      name: backend-net

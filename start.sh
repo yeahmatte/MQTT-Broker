@@ -1,105 +1,49 @@
-FILE=./mosquitto
-if [ -d "$FILE" ]; then
+DIR=./mosquitto
+if [ -d "$DIR" ]; then
     echo "Mosquitto directory exists"
 else
-    mkdir $FILE
+    mkdir $DIR
     echo "Mosquitto directory created"
 fi
-
-# ======== CERTIFICATES ==========
-
-FILE=./mosquitto/certs
-if [ -d "$FILE" ]; then
-    echo "$FILE directory exists"
-else
-    mkdir $FILE
-    echo "$FILE directory created"
-fi
-
-# generate-certificates.sh
-
-CACERT_DEST=./mosquitto/certs/ca.crt
-CACERT_OUTPUT=./Certificates/output/ca.crt
-if [ -f "$CACERT_DEST" ]; then
-    chk1=`cksum $CACERT_DEST | awk -F" " '{print $1}'`
-    chk2=`cksum $CACERT_OUTPUT | awk -F" " '{print $1}'`
-    if [ $chk1 -eq $chk2 ]
-    then
-      echo "$CACERT_DEST Already up to date"
-    else
-      echo "Different file in output, copy to $CACERT_DEST"
-      cp $CACERT_OUTPUT $CACERT_DEST
-    fi
-else
-  echo "No CA Certificate in config folder"
-  if [ -f $CACERT_OUTPUT ]; then
-    echo "$CACERT_OUTPUT output exist, copying from output"
-    cp $CACERT_OUTPUT $CACERT_DEST
-  else
-      echo "No certificate generated, aborting"
-      exit 1
-  fi
-fi
-
-SERVERCERT_DEST=./mosquitto/certs/server.crt
-SERVERCERT_OUTPUT=./Certificates/output/server.crt
-if [ -f "$SERVERCERT_DEST" ]; then
-    chk1=`cksum $SERVERCERT_DEST | awk -F" " '{print $1}'`
-    chk2=`cksum $SERVERCERT_OUTPUT | awk -F" " '{print $1}'`
-    if [ $chk1 -eq $chk2 ]
-    then
-      echo "$SERVERCERT_DEST Already up to date"
-    else
-      echo "Different file in output, copy to $SERVERCERT_DEST"
-      cp $SERVERCERT_OUTPUT $SERVERCERT_DEST
-    fi
-else
-  echo "No SERVER Certificate in config folder"
-  if [ -f $SERVERCERT_OUTPUT ]; then
-    echo "$SERVERCERT_OUTPUT output exist, copying from output"
-    cp $SERVERCERT_OUTPUT $SERVERCERT_DEST
-  else
-      echo "No Certificate generated, aborting"
-      exit 1
-  fi
-fi
-
-SERVERKEY_DEST=./mosquitto/certs/server.key
-SERVERKEY_OUTPUT=./Certificates/output/server.key
-if [ -f "$SERVERKEY_DEST" ]; then
-    chk1=`cksum $SERVERKEY_DEST | awk -F" " '{print $1}'`
-    chk2=`cksum $SERVERKEY_OUTPUT | awk -F" " '{print $1}'`
-    if [ $chk1 -eq $chk2 ]
-    then
-      echo "$SERVERKEY_DEST Already up to date"
-    else
-      echo "Different file in output, copy to $SERVERKEY_DEST"
-      cp $SERVERKEY_OUTPUT $SERVERKEY_DEST
-    fi
-else
-  echo "No SERVER KEY in config folder"
-  if [ -f $SERVERKEY_OUTPUT ]; then
-    echo "$SERVERKEY_OUTPUT output exist, copying from output"
-    cp $SERVERKEY_OUTPUT $SERVERKEY_DEST
-  else
-      echo "No key generated, aborting"
-      exit 1
-  fi
-fi
-
-DIR=./mosquitto/certs
 sudo chown 1883:1883 $DIR -R
 
-# ======== Log file ==========
+DIR=./mosquitto/conf
+if [ -d "$DIR" ]; then
+    echo "Config directory exists"
+else
+    mkdir $DIR
+    echo "Config directory created"
+fi
+sudo chown 1883:1883 $DIR -R
 
 DIR=./mosquitto/log
 if [ -d "$DIR" ]; then
-    echo "$DIR directory exists"
+    echo "Log directory exists"
 else
     mkdir $DIR
-    echo "$DIR directory created"
+    echo "Log directory created"
 fi
+sudo chown 1883:1883 $DIR -R
 
+DIR=./letsencrypt
+if [ -d "$DIR" ]; then
+    echo "Letsencrypt directory exists"
+else
+    mkdir $DIR
+    echo "Letsencrypt directory created"
+fi
+sudo chown 1883:1883 $DIR -R
+
+DIR=./scripts
+if [ -d "$DIR" ]; then
+    echo "Scripts directory exists"
+else
+    mkdir $DIR
+    echo "Scripts directory created"
+fi
+sudo chown 1883:1883 $DIR -R
+
+DIR=./mosquitto/log
 LOGFILE=./mosquitto/log/mosquitto.log
 if [ -f "$LOGFILE" ]; then
     echo "$LOGFILE exists"
@@ -111,7 +55,7 @@ sudo chown 1883:1883 $DIR -R
 
 # ======== Config ==========
 
-CONFFILE=./mosquitto/config/mosquitto.conf
+CONFFILE=./mosquitto/conf/mosquitto.conf
 if [ -f "$CONFFILE" ]; then
     echo "$CONFFILE exists"
 else
@@ -119,7 +63,7 @@ else
     exit 1
 fi
 
-PWDFILE=./mosquitto/config/password_file
+PWDFILE=./mosquitto/conf/password_file
 if [ -f "$PWDFILE" ]; then
     echo "$PWDFILE exists"
 else
@@ -129,7 +73,7 @@ fi
 
 sudo chmod o+w $PWDFILE
 
-DIR=./mosquitto/config
+DIR=./mosquitto/conf
 sudo chown 1883:1883 $DIR -R
 
 # ======== Data ==========
