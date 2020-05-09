@@ -15,7 +15,7 @@
 # will use --staging --test-cert for obtaining a cert and --dry-run for renewal
 # This allows the user to test out the configuration and connectivity for obtaining
 # certs without running into LetsEncrypt limits. It's advisable to define TESTCERT
-# when initially bringing up the container.  Once the logs (docker logs <containername>) 
+# when initially bringing up the container.  Once the logs (docker logs <containername>)
 # show that LetsEncrypt is working fine, then remove TESTCERT environment variable
 # to let this script obtain and manage the real certificates
 #
@@ -42,7 +42,7 @@ else
                                         --test-cert \
                                         --standalone \
                                         --agree-tos \
-                                        --standalone-supported-challenges http-01 \
+                                        -–preferred-challenges http \
                                         -n \
                                         -d $DOMAIN \
                                         -m $EMAIL
@@ -51,7 +51,7 @@ else
                                 certbot certonly \
                                         --standalone \
                                         --agree-tos \
-                                        --standalone-supported-challenges http-01 \
+                                        -–preferred-challenges http \
                                         -n \
                                         -d $DOMAIN \
                                         -m $EMAIL
