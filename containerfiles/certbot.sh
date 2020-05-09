@@ -42,13 +42,14 @@ else
                                         --test-cert \
                                         --standalone \
                                         --preferred-challenges http \
-                                        -d $DOMAIN 
+                                        -d $DOMAIN
                         else
                                 echo "Obtaining cert for $DOMAIN"
                                 certbot certonly \
                                         --standalone \
                                         --preferred-challenges http \
                                         -d $DOMAIN
+
                         fi
                 else
                         echo 'ERROR: $EMAIL must be defined'
