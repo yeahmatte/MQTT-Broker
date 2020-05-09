@@ -9,8 +9,8 @@ services:
     user: 1883:1883
     volumes:
     volumes:
-      - ./mosquitto/conf/:/mosquitto/conf
-      - ./mosquitto/log/:/mosquitto/log
+      - ./mosquitto/conf:/mosquitto/conf
+      - ./mosquitto/log:/mosquitto/log
       - ./letsencrypt:/etc/letsencrypt
       - ./scripts:/scripts
       - ./mosquitto/data:/mosquitto/data
