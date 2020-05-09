@@ -23,6 +23,5 @@ services:
     environment:
       - DOMAIN=YOUR_DOMAIN_HERE
       - EMAIL=YOUR_DOMAIN_EMAIL
-    environment:
       - PUID=1883
       - PGID=1883
