@@ -42,8 +42,10 @@ else
                                         --test-cert \
                                         --standalone \
                                         --agree-tos \
-                                        -–preferred-challenges http \
+                                        --preferred-challenges http \
                                         -n \
+                                        --debug-challenge \
+                                        --verbose \
                                         -d $DOMAIN \
                                         -m $EMAIL
                         else
@@ -51,8 +53,10 @@ else
                                 certbot certonly \
                                         --standalone \
                                         --agree-tos \
-                                        -–preferred-challenges http \
+                                        --preferred-challenges http \
                                         -n \
+                                        --debug-challenge \
+                                        --verbose \
                                         -d $DOMAIN \
                                         -m $EMAIL
                         fi
