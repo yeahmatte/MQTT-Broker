@@ -41,24 +41,14 @@ else
                                         --staging \
                                         --test-cert \
                                         --standalone \
-                                        --agree-tos \
                                         --preferred-challenges http \
-                                        -n \
-                                        --debug-challenge \
-                                        --verbose \
                                         -d $DOMAIN \
-                                        -m $EMAIL
                         else
                                 echo "Obtaining cert for $DOMAIN"
                                 certbot certonly \
                                         --standalone \
-                                        --agree-tos \
                                         --preferred-challenges http \
-                                        -n \
-                                        --debug-challenge \
-                                        --verbose \
                                         -d $DOMAIN \
-                                        -m $EMAIL
                         fi
                 else
                         echo 'ERROR: $EMAIL must be defined'
