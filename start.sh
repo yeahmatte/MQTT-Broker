@@ -43,6 +43,11 @@ else
 fi
 sudo chown 1883:1883 $DIR -R
 
+# Files
+python3 install_tools/start.py
+
+#
+
 DIR=./mosquitto/log
 LOGFILE=./mosquitto/log/mosquitto.log
 if [ -f "$LOGFILE" ]; then
@@ -63,7 +68,7 @@ else
     exit 1
 fi
 
-PWDFILE=./mosquitto/conf/password_file
+PWDFILE=./mosquitto/conf/passwordfile
 if [ -f "$PWDFILE" ]; then
     echo "$PWDFILE exists"
 else
