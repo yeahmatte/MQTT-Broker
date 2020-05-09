@@ -28,7 +28,3 @@ services:
     environment:
       - PUID=1883
       - PGID=1883
-networks:
-  backend-net:
-    external:
-      name: backend-net
