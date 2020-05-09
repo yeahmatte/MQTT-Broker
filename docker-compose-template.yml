@@ -15,8 +15,6 @@ services:
       - ./scripts:/scripts
       - ./mosquitto/data:/mosquitto/data
       - /etc/localtime:/etc/localtime:ro
-    networks:
-      - backend-net
     ports:
       - 1883:1883
       - 8083:8083
