@@ -44,7 +44,7 @@ if "domain" in cert_config:
     if "cert_path" in cert_config["domain"]:
         # Replace the target string
         filedata = filedata.replace('YOUR_CERT_PATH', cert_config["domain"]["cert_path"])
-        print("Certpath = %s".format(cert_config["domain"]["cert_path"]))
+        print("Certpath = {}".format(cert_config["domain"]["cert_path"]))
 os.environ['CERTPATH'] = cert_config["domain"]["cert_path"]
 
 # Write the file out again
