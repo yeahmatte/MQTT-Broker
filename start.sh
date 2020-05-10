@@ -65,6 +65,7 @@ sudo chown 1883:1883 $DIR -R
 # Files
 python3 install_tools/start.py
 
+echo "$CERTPATH copy to letsencrypt"
 sudo cp $CERTPATH ./letsencrypt/certificates
 
 #
