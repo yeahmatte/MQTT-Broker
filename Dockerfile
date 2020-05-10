@@ -30,6 +30,7 @@ RUN	apt-get -y install mosquitto
 RUN	apt-get -y install mosquitto-clients
 
 RUN	apt-get -y install apache2
+RUN	apt-get -y install python-certbot-apache
 
 RUN systemctl enable apache2
 
