@@ -9,9 +9,9 @@ RUN \
 	mkdir /mosquitto && \
 	mkdir /mosquitto/log && \
 	mkdir /mosquitto/conf && \
-	apt-get update && \
-	apt-get upgrade && \
-	apt-get install \
+	apt-get -y update && \
+	apt-get -y upgrade && \
+	apt-get -y install \
 		bash \
 		coreutils \
 		nano \
