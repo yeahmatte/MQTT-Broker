@@ -99,7 +99,8 @@ sudo chown 1883:1883 $DIR -R
 CAFILE=./letsencrypt/chain.pem
 if [ -f "$CAFILE" ]; then
     rm $CAFILE
-curl "https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem.txt" > "./letsencrypt/chain.pem"
+fi
+curl https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem.txt > ./letsencrypt/chain.pem
 
 
 #docker-compose pull
