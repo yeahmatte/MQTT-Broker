@@ -10,6 +10,7 @@ services:
     volumes:
       - ./mosquitto/conf:/mosquitto/conf
       - ./mosquitto/log:/mosquitto/log
+      - ./letsencrypt/chain.pem:/etc/letsencrypt/chain.pem
       - YOUR_CERT_PATH:/etc/letsencrypt/certificates
       - ./scripts:/scripts
       - ./mosquitto/data:/mosquitto/data
