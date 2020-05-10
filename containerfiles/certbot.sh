@@ -42,13 +42,17 @@ else
                                         --test-cert \
                                         --standalone \
                                         --preferred-challenges http \
-                                        -d $DOMAIN
+                                        -d $DOMAIN \
+                                        -m $EMAIL \
+                                        -n
                         else
                                 echo "Obtaining cert for $DOMAIN"
                                 certbot certonly \
                                         --standalone \
                                         --preferred-challenges http \
-                                        -d $DOMAIN
+                                        -d $DOMAIN \
+                                        -m $EMAIL \
+                                        -n
 
                         fi
                 else

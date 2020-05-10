@@ -5,24 +5,24 @@ LABEL maintainer yeahmatte <yeahmatte@summitmonster.com>
 ENV TERM=xterm-color
 ENV SHELL=/bin/bash
 
-RUN \
-	mkdir /mosquitto && \
-	mkdir /mosquitto/log && \
-	mkdir /mosquitto/conf && \
-	apt-get -y update && \
-	apt-get -y upgrade && \
-	apt-get -y install bash && \
-	apt-get -y install coreutils && \
-	apt-get -y install python-pycryptodome && \
-	apt-get -y install nano && \
-	apt-get -y install ca-certificates && \
-	apt-get -y install certbot && \
-	apt-get -y install mosquitto && \
-	apt-get -y install mosquitto-clients && \
-	apt-get -y install sudo && \
-	rm -f /var/cache/apk/* && \
-	pip install --upgrade pip && \
-	pip install pyRFC3339 configobj ConfigArgParse
+
+RUN	mkdir /mosquitto
+RUN	mkdir /mosquitto/log
+RUN	mkdir /mosquitto/conf
+RUN	apt-get -y update
+RUN	apt-get -y upgrade
+RUN	apt-get -y install bash
+RUN	apt-get -y install coreutils
+RUN	apt-get -y install python-pycryptodome
+RUN	apt-get -y install nano
+RUN	apt-get -y install ca-certificates
+RUN	apt-get -y install certbot
+RUN	apt-get -y install mosquitto
+RUN	apt-get -y install mosquitto-clients
+RUN	apt-get -y install sudo
+RUN	rm -f /var/cache/apk/*
+RUN	pip install --upgrade pip
+RUN	pip install pyRFC3339 configobj ConfigArgParse
 
 COPY ./containerfiles/run.sh /run.sh
 COPY ./containerfiles/certbot.sh /certbot.sh
