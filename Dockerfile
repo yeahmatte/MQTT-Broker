@@ -1,4 +1,4 @@
-FROM python:2.7-alpine
+FROM python:3
 LABEL maintainer yeahmatte <yeahmatte@summitmonster.com>
 
 # Set environment variables.
@@ -19,6 +19,7 @@ RUN \
 		ca-certificates \
         	certbot \
 		mosquitto \
+		sudo \
 		mosquitto-clients && \
 	rm -f /var/cache/apk/* && \
 	pip install --upgrade pip && \
