@@ -25,6 +25,16 @@ else
 fi
 sudo chown 1883:1883 $DIR -R
 
+DIR=./mosquitto/data
+if [ -d "$DIR" ]; then
+    echo "data directory exists"
+else
+    mkdir $DIR
+    echo "data directory created"
+fi
+sudo chown 1883:1883 $DIR -R
+
+
 DIR=./letsencrypt
 if [ -d "$DIR" ]; then
     echo "Letsencrypt directory exists"
@@ -33,43 +43,6 @@ else
     echo "Letsencrypt directory created"
 fi
 #sudo chown 1883:1883 $DIR -R
-
-DIR=./certbot
-if [ -d "$DIR" ]; then
-    echo "Letsencrypt directory exists"
-else
-    mkdir $DIR
-    echo "Letsencrypt directory created"
-fi
-#sudo chown 1883:1883 $DIR -R
-
-DIR=./certbot/conf
-if [ -d "$DIR" ]; then
-    echo "Letsencrypt directory exists"
-else
-    mkdir $DIR
-    echo "Letsencrypt directory created"
-fi
-#sudo chown 1883:1883 $DIR -R
-
-DIR=./certbot/logs
-if [ -d "$DIR" ]; then
-    echo "Letsencrypt directory exists"
-else
-    mkdir $DIR
-    echo "Letsencrypt directory created"
-fi
-#sudo chown 1883:1883 $DIR -R
-
-DIR=./certbot/data
-if [ -d "$DIR" ]; then
-    echo "Letsencrypt directory exists"
-else
-    mkdir $DIR
-    echo "Letsencrypt directory created"
-fi
-#sudo chown 1883:1883 $DIR -R
-
 
 
 DIR=./scripts
