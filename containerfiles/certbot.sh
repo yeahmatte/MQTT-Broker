@@ -46,7 +46,7 @@ else
                                         -m $EMAIL \
                                         -n \
                                         --work-dir /etc/letsencrypt \
-                                        --log-dir /etc/letsencrypt \
+                                        --logs-dir /etc/letsencrypt \
                                         --config-dir /etc/letsencrypt
                         else
                                 echo "Obtaining cert for $DOMAIN"
@@ -57,7 +57,7 @@ else
                                         -m $EMAIL \
                                         -n \
                                         --work-dir /etc/letsencrypt \
-                                        --log-dir /etc/letsencrypt \
+                                        --logs-dir /etc/letsencrypt \
                                         --config-dir /etc/letsencrypt
 
                         fi
