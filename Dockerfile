@@ -10,6 +10,9 @@ RUN	mkdir /mosquitto
 RUN	mkdir /mosquitto/log
 RUN	mkdir /mosquitto/conf
 RUN	mkdir /mosquitto/data
+RUN	mkdir /mosquitto/data
+RUN	mkdir /etc/letsencrypt
+
 
 RUN	apt-get -y update
 RUN	apt-get -y upgrade

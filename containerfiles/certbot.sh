@@ -44,7 +44,10 @@ else
                                         --preferred-challenges http \
                                         -d $DOMAIN \
                                         -m $EMAIL \
-                                        -n
+                                        -n \
+                                        --work-dir /etc/letsencrypt \
+                                        --log-dir /etc/letsencrypt \
+                                        --config-dir /etc/letsencrypt
                         else
                                 echo "Obtaining cert for $DOMAIN"
                                 certbot certonly \
@@ -52,7 +55,10 @@ else
                                         --preferred-challenges http \
                                         -d $DOMAIN \
                                         -m $EMAIL \
-                                        -n
+                                        -n \
+                                        --work-dir /etc/letsencrypt \
+                                        --log-dir /etc/letsencrypt \
+                                        --config-dir /etc/letsencrypt
 
                         fi
                 else

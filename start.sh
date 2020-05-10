@@ -5,7 +5,7 @@ else
     mkdir $DIR
     echo "Mosquitto directory created"
 fi
-#sudo chown 1883:1883 $DIR -R
+sudo chown 1883:1883 $DIR -R
 
 DIR=./mosquitto/conf
 if [ -d "$DIR" ]; then
@@ -14,7 +14,7 @@ else
     mkdir $DIR
     echo "Config directory created"
 fi
-#sudo chown 1883:1883 $DIR -R
+sudo chown 1883:1883 $DIR -R
 
 DIR=./mosquitto/log
 if [ -d "$DIR" ]; then
@@ -23,7 +23,7 @@ else
     mkdir $DIR
     echo "Log directory created"
 fi
-#sudo chown 1883:1883 $DIR -R
+sudo chown 1883:1883 $DIR -R
 
 DIR=./letsencrypt
 if [ -d "$DIR" ]; then
@@ -32,7 +32,7 @@ else
     mkdir $DIR
     echo "Letsencrypt directory created"
 fi
-#sudo chown 1883:1883 $DIR -R
+sudo chown 1883:1883 $DIR -R
 
 DIR=./scripts
 if [ -d "$DIR" ]; then
@@ -41,7 +41,7 @@ else
     mkdir $DIR
     echo "Scripts directory created"
 fi
-#sudo chown 1883:1883 $DIR -R
+sudo chown 1883:1883 $DIR -R
 
 # Files
 python3 install_tools/start.py
@@ -56,7 +56,7 @@ else
     touch $LOGFILE
 fi
 sudo chmod o+w $LOGFILE
-#sudo chown 1883:1883 $DIR -R
+sudo chown 1883:1883 $DIR -R
 
 # ======== Config ==========
 
@@ -79,11 +79,11 @@ fi
 sudo chmod o+w $PWDFILE
 
 DIR=./mosquitto/conf
-#sudo chown 1883:1883 $DIR -R
+sudo chown 1883:1883 $DIR -R
 
 # ======== Data ==========
 DIR=./mosquitto/data
-#sudo chown 1883:1883 $DIR -R
+sudo chown 1883:1883 $DIR -R
 
 
 #docker-compose pull
