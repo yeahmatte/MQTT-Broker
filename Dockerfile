@@ -19,12 +19,19 @@ RUN	apt-get -y install bash
 RUN	apt-get -y install coreutils
 RUN	apt-get -y install python-pycryptodome
 RUN	apt-get -y install nano
+RUN	apt-get -y install sudo
+RUN	apt-get -y install lsof
+RUN	apt-get -y install systemd
+
 RUN	apt-get -y install ca-certificates
 RUN	apt-get -y install certbot
+
 RUN	apt-get -y install mosquitto
 RUN	apt-get -y install mosquitto-clients
-RUN	apt-get -y install sudo
-RUN	apt-get -y install netstat
+
+RUN	apt-get -y install apache2
+
+RUN systemctl enable apache2
 
 RUN	rm -f /var/cache/apk/*
 RUN	pip install --upgrade pip
