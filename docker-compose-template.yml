@@ -8,7 +8,6 @@ services:
     restart: unless-stopped
     user: 1883:1883
     volumes:
-    volumes:
       - ./mosquitto/conf:/mosquitto/conf
       - ./mosquitto/log:/mosquitto/log
       - ./certbot/conf:/etc/letsencrypt
@@ -26,11 +25,11 @@ services:
       - PGID=1883
 
   certbot:
-     image: certbot/certbot:latest
-     command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email YOUR_DOMAIN_EMAIL --agree-tos --no-eff-email -d YOUR_DOMAIN_HERE
-     volumes:
-       - ./certbot/conf/:/etc/letsencrypt
-       - ./certbot/logs/:/var/log/letsencrypt
-       - ./certbot/data:/usr/share/nginx/html/letsencrypt
+    image: certbot/certbot:latest
+    command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email YOUR_DOMAIN_EMAIL --agree-tos --no-eff-email -d YOUR_DOMAIN_HERE
+    volumes:
+      - ./certbot/conf/:/etc/letsencrypt
+      - ./certbot/logs/:/var/log/letsencrypt
+      - ./certbot/data:/usr/share/nginx/html/letsencrypt
     ports:
-       - 8116:80
+      - 8116:80
