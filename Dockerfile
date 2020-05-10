@@ -17,22 +17,22 @@ RUN	apt-get -y update
 RUN	apt-get -y upgrade
 RUN	apt-get -y install bash
 RUN	apt-get -y install coreutils
-RUN	apt-get -y install python-pycryptodome
+#RUN	apt-get -y install python-pycryptodome
 RUN	apt-get -y install nano
-RUN	apt-get -y install sudo
-RUN	apt-get -y install lsof
-RUN	apt-get -y install systemd
+#RUN	apt-get -y install sudo
+#RUN	apt-get -y install lsof
+#RUN	apt-get -y install systemd
 
-RUN	apt-get -y install ca-certificates
-RUN	apt-get -y install certbot
+#RUN	apt-get -y install ca-certificates
+#RUN	apt-get -y install certbot
 
 RUN	apt-get -y install mosquitto
 RUN	apt-get -y install mosquitto-clients
 
-RUN	apt-get -y install apache2
-RUN	apt-get -y install python-certbot-apache
+#RUN	apt-get -y install apache2
+#RUN	apt-get -y install python-certbot-apache
 
-RUN systemctl enable apache2
+#RUN systemctl enable apache2
 
 RUN	rm -f /var/cache/apk/*
 RUN	pip install --upgrade pip
@@ -42,6 +42,7 @@ COPY ./containerfiles/run.sh /run.sh
 COPY ./containerfiles/certbot.sh /certbot.sh
 COPY ./containerfiles/restart.sh /restart.sh
 COPY ./containerfiles/croncert.sh /etc/periodic/weekly/croncert.sh
+
 RUN \
 	chmod +x /run.sh && \
 	chmod +x /certbot.sh && \
@@ -51,7 +52,7 @@ RUN \
 EXPOSE 1883
 EXPOSE 8883
 EXPOSE 8083
-EXPOSE 80
+#EXPOSE 80
 
 # This will run any scripts found in /scripts/*.sh
 # then start Apache
