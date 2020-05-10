@@ -45,7 +45,8 @@ if "domain" in cert_config:
         # Replace the target string
         filedata = filedata.replace('YOUR_CERT_PATH', cert_config["domain"]["cert_path"])
         print("Certpath = {}".format(cert_config["domain"]["cert_path"]))
-os.environ['CERTPATH'] = cert_config["domain"]["cert_path"]
+
+os.system("sudo cp {} {}".format(cert_config["domain"]["cert_path"], "./letsencrypt/certificates" ))
 
 # Write the file out again
 with open('docker-compose.yml', 'w') as file:

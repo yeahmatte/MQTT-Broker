@@ -65,9 +65,6 @@ sudo chown 1883:1883 $DIR -R
 # Files
 sudo python3 install_tools/start.py
 
-sudo echo "$CERTPATH copy to letsencrypt"
-sudo cp $CERTPATH ./letsencrypt/certificates
-
 #
 
 DIR=./mosquitto/log
