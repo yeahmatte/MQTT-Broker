@@ -9,6 +9,8 @@ ENV SHELL=/bin/bash
 RUN	mkdir /mosquitto
 RUN	mkdir /mosquitto/log
 RUN	mkdir /mosquitto/conf
+RUN	mkdir /mosquitto/data
+
 RUN	apt-get -y update
 RUN	apt-get -y upgrade
 RUN	apt-get -y install bash
@@ -36,6 +38,7 @@ RUN \
 
 EXPOSE 1883
 EXPOSE 8883
+EXPOSE 8083
 EXPOSE 80
 
 # This will run any scripts found in /scripts/*.sh
