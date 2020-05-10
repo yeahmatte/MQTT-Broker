@@ -10,7 +10,6 @@ RUN	mkdir /mosquitto
 RUN	mkdir /mosquitto/log
 RUN	mkdir /mosquitto/conf
 RUN	mkdir /mosquitto/data
-RUN	mkdir /mosquitto/data
 RUN	mkdir /etc/letsencrypt
 
 
