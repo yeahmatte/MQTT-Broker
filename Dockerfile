@@ -9,9 +9,9 @@ RUN \
 	mkdir /mosquitto && \
 	mkdir /mosquitto/log && \
 	mkdir /mosquitto/conf && \
-	apk update && \
-	apk upgrade && \
-	apk add \
+	apt-get update && \
+	apt-get upgrade && \
+	apt-get install \
 		bash \
 		coreutils \
 		nano \
