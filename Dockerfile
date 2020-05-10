@@ -11,16 +11,15 @@ RUN \
 	mkdir /mosquitto/conf && \
 	apt-get -y update && \
 	apt-get -y upgrade && \
-	apt-get -y install \
-		bash \
-		coreutils \
-		nano \
-        	py-crypto \
-		ca-certificates \
-        	certbot \
-		mosquitto \
-		sudo \
-		mosquitto-clients && \
+	apt-get -y install bash && \
+	apt-get -y install coreutils && \
+	apt-get -y install python-pycryptodome && \
+	apt-get -y install nano && \
+	apt-get -y install ca-certificates && \
+	apt-get -y install certbot && \
+	apt-get -y install mosquitto && \
+	apt-get -y install mosquitto-clients && \
+	apt-get -y install sudo && \
 	rm -f /var/cache/apk/* && \
 	pip install --upgrade pip && \
 	pip install pyRFC3339 configobj ConfigArgParse
