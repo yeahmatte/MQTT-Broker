@@ -1,5 +1,6 @@
 import toml
 import os.path
+import os
 
 install_file_path = './install_tools/install.toml'
 
@@ -43,6 +44,8 @@ if "domain" in cert_config:
     if "cert_path" in cert_config["domain"]:
         # Replace the target string
         filedata = filedata.replace('YOUR_CERT_PATH', cert_config["domain"]["cert_path"])
+
+os.environ['CERTPATH'] = cert_config["domain"]["cert_path"]
 
 # Write the file out again
 with open('docker-compose.yml', 'w') as file:

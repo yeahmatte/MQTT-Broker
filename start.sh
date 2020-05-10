@@ -42,8 +42,16 @@ else
     mkdir $DIR
     echo "Letsencrypt directory created"
 fi
-#sudo chown 1883:1883 $DIR -R
+sudo chown 1883:1883 $DIR -R
 
+DIR=./letsencrypt/certificates
+if [ -d "$DIR" ]; then
+    echo "Letsencrypt directory exists"
+else
+    mkdir $DIR
+    echo "Letsencrypt directory created"
+fi
+sudo chown 1883:1883 $DIR -R
 
 DIR=./scripts
 if [ -d "$DIR" ]; then
@@ -56,6 +64,8 @@ sudo chown 1883:1883 $DIR -R
 
 # Files
 python3 install_tools/start.py
+
+sudo cp $CERTPATH ./letsencrypt/certificates
 
 #
 
