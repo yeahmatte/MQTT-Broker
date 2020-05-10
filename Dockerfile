@@ -24,6 +24,8 @@ RUN	apt-get -y install certbot
 RUN	apt-get -y install mosquitto
 RUN	apt-get -y install mosquitto-clients
 RUN	apt-get -y install sudo
+RUN	apt-get -y install netstat
+
 RUN	rm -f /var/cache/apk/*
 RUN	pip install --upgrade pip
 RUN	pip install pyRFC3339 configobj ConfigArgParse
