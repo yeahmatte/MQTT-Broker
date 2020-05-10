@@ -4,12 +4,12 @@
 # 	Note that this script (certbot.sh) is also
 # 	run weekely from /etc/periodic/weekly/croncert.sh
 #
-#	WARNING: 
-#		Duing the weekly check, if certs are renewed, 
+#	WARNING:
+#		Duing the weekly check, if certs are renewed,
 #		the mosquitto process is restarted, causing
 #		a brief (few second) unavoidable service disruption
 #
-/certbot.sh
+# /certbot.sh
 
 # This script assumes a standard persistent directory and file layout of:
 #	/mosquitto/
@@ -27,7 +27,7 @@
 #
 if [ ! -d "/mosquitto/log" ]; then
 	echo "WARNING: missing /mosquitto/log directory"
-	echo "WARNING: ignore if your mosquitto.conf has a non-standard configuration" 
+	echo "WARNING: ignore if your mosquitto.conf has a non-standard configuration"
 fi
 
 # create blank passwd if it doesn't exist
@@ -38,7 +38,7 @@ if [ -d "/mosquitto/conf" ]; then
 	fi
 else
 	echo "WARNING: /mosquitto/conf should be mapped to persistent docker volume"
-	echo "WARNING: ignore if your mosquitto.conf has a non-standard configuration" 
+	echo "WARNING: ignore if your mosquitto.conf has a non-standard configuration"
 fi
 
 # execute any pre-exec scripts, useful for customization of images
@@ -59,7 +59,7 @@ if [ -f "/mosquitto/conf/mosquitto.conf" ]; then
 	# not receiving the SIGTERM signal from Docker on shutdown.  This is
 	# nessary because mosquitto must be restarted automatically when
 	# certificates are renewed. In other words, we need the container to
-	# continue running beyond the life of the mosquitto process. 
+	# continue running beyond the life of the mosquitto process.
 	#
 	# A possible enhancement would be to include an "is alive" check
 	# for mosquitto to restart it if required or exit the container.

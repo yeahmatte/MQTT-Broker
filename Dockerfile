@@ -11,28 +11,16 @@ RUN	mkdir /mosquitto/log
 RUN	mkdir /mosquitto/conf
 RUN	mkdir /mosquitto/data
 RUN	mkdir /etc/letsencrypt
-
+RUN	mkdir /etc/letsencrypt/certificates
 
 RUN	apt-get -y update
 RUN	apt-get -y upgrade
 RUN	apt-get -y install bash
 RUN	apt-get -y install coreutils
-#RUN	apt-get -y install python-pycryptodome
 RUN	apt-get -y install nano
-#RUN	apt-get -y install sudo
-#RUN	apt-get -y install lsof
-#RUN	apt-get -y install systemd
-
-#RUN	apt-get -y install ca-certificates
-#RUN	apt-get -y install certbot
 
 RUN	apt-get -y install mosquitto
 RUN	apt-get -y install mosquitto-clients
-
-#RUN	apt-get -y install apache2
-#RUN	apt-get -y install python-certbot-apache
-
-#RUN systemctl enable apache2
 
 RUN	rm -f /var/cache/apk/*
 RUN	pip install --upgrade pip
@@ -45,14 +33,11 @@ COPY ./containerfiles/croncert.sh /etc/periodic/weekly/croncert.sh
 
 RUN \
 	chmod +x /run.sh && \
-	chmod +x /certbot.sh && \
 	chmod +x /restart.sh && \
-	chmod +x /etc/periodic/weekly/croncert.sh
 
 EXPOSE 1883
 EXPOSE 8883
 EXPOSE 8083
-#EXPOSE 80
 
 # This will run any scripts found in /scripts/*.sh
 # then start Apache

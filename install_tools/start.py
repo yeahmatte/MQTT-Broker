@@ -40,6 +40,9 @@ if "domain" in cert_config:
     if "domain_email" in cert_config["domain"]:
         # Replace the target string
         filedata = filedata.replace('YOUR_DOMAIN_EMAIL', cert_config["domain"]["domain_email"])
+    if "cert_path" in cert_config["domain"]:
+        # Replace the target string
+        filedata = filedata.replace('YOUR_CERT_PATH', cert_config["domain"]["cert_path"])
 
 # Write the file out again
 with open('docker-compose.yml', 'w') as file:
